@@ -64,7 +64,8 @@ int main(int argc, char* argv[]) {
 		printf("%02x:%02x:%02x:%02x:%02x:%02x -> ", ether->ether_shost[0], ether->ether_shost[1], ether->ether_shost[2], ether->ether_shost[3], ether->ether_shost[4], ether->ether_shost[5]);
 		printf("%02x:%02x:%02x:%02x:%02x:%02x, ", ether->ether_dhost[0], ether->ether_dhost[1], ether->ether_dhost[2], ether->ether_dhost[3], ether->ether_dhost[4], ether->ether_dhost[5]);
 
-		printf("%s:%u -> %s:%u\n", inet_ntoa(ip->ip_src), ntohs(tcp->th_sport), inet_ntoa(ip->ip_dst), ntohs(tcp->th_dport));
+		printf("%s:%u -> ", inet_ntoa(ip->ip_src), ntohs(tcp->th_sport));
+		printf("%s:%u\n", inet_ntoa(ip->ip_dst), ntohs(tcp->th_dport));
 
 		printf("payload: ");
 		for (int i = 0; i < payload_len && i < 20; i++) {
